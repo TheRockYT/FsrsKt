@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "one.felsen.fsrskt"
-version = "1.0.0"
+version = "1.0.1"
 description = "This project is a Kotlin Multiplatform library that implements the FSRS-6 (Free Spaced Repetition Scheduler) algorithm."
 
 kotlin {
