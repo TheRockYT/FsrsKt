@@ -7,8 +7,9 @@ plugins {
     alias(libs.plugins.jetbrains.dokka)
 }
 
-group = "io.github.kotlin"
-version = "1.0.0"
+group = "one.felsen.fsrskt"
+version = "0.0.1"
+description = "This project is a Kotlin Multiplatform library that implements the FSRS-6 (Free Spaced Repetition Scheduler) algorithm."
 
 kotlin {
     jvm()
@@ -51,31 +52,31 @@ mavenPublishing {
 
     signAllPublications()
 
-    coordinates(group.toString(), "library", version.toString())
+    coordinates(group.toString(), "fsrskt", version.toString())
 
     pom {
-        name = "My library"
-        description = "A library."
-        inceptionYear = "2024"
-        url = "https://github.com/kotlin/multiplatform-library-template/"
+        name.set("FsrsKt")
+        description.set("This project is a Kotlin Multiplatform library that implements the FSRS-6 (Free Spaced Repetition Scheduler) algorithm.")
+        inceptionYear.set("2026")
+        url.set("https://github.com/therockyt/fsrskt/")
         licenses {
             license {
-                name = "XXX"
-                url = "YYY"
-                distribution = "ZZZ"
+                name.set("GNU GENERAL PUBLIC LICENSE, Version 3")
+                url.set("https://www.gnu.org/licenses/gpl-3.0.html")
+                distribution.set("https://www.gnu.org/licenses/gpl-3.0.html")
             }
         }
         developers {
             developer {
-                id = "XXX"
-                name = "YYY"
-                url = "ZZZ"
+                id.set("TheRockYT")
+                name.set("TheRockYT")
+                url.set("https://github.com/therockyt/")
             }
         }
         scm {
-            url = "XXX"
-            connection = "YYY"
-            developerConnection = "ZZZ"
+            url.set("https://github.com/therockyt/fsrskt/")
+            connection.set("scm:git:git://github.com/therockyt/fsrskt.git")
+            developerConnection.set("scm:git:ssh://git@github.com/therockyt/fsrskt.git")
         }
     }
 }
