@@ -3,10 +3,12 @@ agp = "9.1.1"
 kotlin = "2.4.10"
 android-minSdk = "24"
 android-compileSdk = "36"
+kotlinxDatetime = "0.8.0"
 vanniktechMavenPublish = "0.37.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 
 [plugins]
 android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
