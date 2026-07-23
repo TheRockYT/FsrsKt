@@ -96,7 +96,10 @@ create a simple flashcard application that uses FSRS to schedule reviews.
     val calc = FsrsCalculator()
    
     val card: Flashcard = ... // Get the card to review (see step 3)
-    val rating: Rating = ... // Get the user's rating for the card (e.g., 0-5)
+    val rating: Rating = ... // Get the user's rating for the card (e.g., EASY, GOOD)
+   
+    // Get the current time
+    val now = Clock.System.now()
    
     // Use the calculator to calculate the new FSRS state based on the user's rating and the elapsed time since the last review.
     val newState = calc.review(
