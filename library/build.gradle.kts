@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.DeploymentValidation
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -8,7 +9,7 @@ plugins {
 }
 
 group = "one.felsen.fsrskt"
-version = "0.0.2-SNAPSHOT"
+version = "0.0.3-SNAPSHOT"
 description = "This project is a Kotlin Multiplatform library that implements the FSRS-6 (Free Spaced Repetition Scheduler) algorithm."
 
 kotlin {
@@ -48,11 +49,11 @@ kotlin {
 }
 
 mavenPublishing {
-    publishToMavenCentral(automaticRelease = true)
+    publishToMavenCentral(automaticRelease = true, validateDeployment = DeploymentValidation.PUBLISHED)
 
     signAllPublications()
 
-    coordinates(group.toString(), "fsrskt", version.toString())
+    coordinates("one.felsen.fsrskt", "fsrskt", version.toString())
 
     pom {
         name.set("FsrsKt")
