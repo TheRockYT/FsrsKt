@@ -1,0 +1,39 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:one.felsen.fsrskt.fsrs6////PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/index.html
+$dokka.location:one.felsen.fsrskt.fsrs6/Fsrs///PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs/index.html
+$dokka.location:one.felsen.fsrskt.fsrs6/Fsrs/Fsrs/#kotlin.collections.List[kotlin.Double]/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs/-fsrs.html
+$dokka.location:one.felsen.fsrskt.fsrs6/Fsrs/initialDifficulty/#one.felsen.fsrskt.fsrs6.FsrsRating/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs/initial-difficulty.html
+$dokka.location:one.felsen.fsrskt.fsrs6/Fsrs/initialStability/#one.felsen.fsrskt.fsrs6.FsrsRating/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs/initial-stability.html
+$dokka.location:one.felsen.fsrskt.fsrs6/Fsrs/nextDifficulty/#kotlin.Double#one.felsen.fsrskt.fsrs6.FsrsRating/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs/next-difficulty.html
+$dokka.location:one.felsen.fsrskt.fsrs6/Fsrs/nextStabilityShortTerm/#kotlin.Double#one.felsen.fsrskt.fsrs6.FsrsRating/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs/next-stability-short-term.html
+$dokka.location:one.felsen.fsrskt.fsrs6/Fsrs/retrievability/#kotlin.Double#kotlin.Double/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs/retrievability.html
+$dokka.location:one.felsen.fsrskt.fsrs6/Fsrs/stabilityOnLapse/#kotlin.Double#kotlin.Double#kotlin.Double/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs/stability-on-lapse.html
+$dokka.location:one.felsen.fsrskt.fsrs6/Fsrs/stabilityOnRecall/#kotlin.Double#kotlin.Double#kotlin.Double#one.felsen.fsrskt.fsrs6.FsrsRating/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs/stability-on-recall.html
+$dokka.location:one.felsen.fsrskt.fsrs6/Fsrs/w/#/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs/w.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsCalculator///PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-calculator/index.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsCalculator/FsrsCalculator/#one.felsen.fsrskt.fsrs6.Fsrs/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-calculator/-fsrs-calculator.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsCalculator/fsrs/#/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-calculator/fsrs.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsCalculator/review/#one.felsen.fsrskt.fsrs6.FsrsState?#one.felsen.fsrskt.fsrs6.FsrsRating#kotlin.Double#kotlin.Boolean/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-calculator/review.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsParameters///PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-parameters/index.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsParameters/defaultParameters/#/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-parameters/default-parameters.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsRating.AGAIN///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-rating/-a-g-a-i-n/index.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsRating.EASY///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-rating/-e-a-s-y/index.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsRating.GOOD///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-rating/-g-o-o-d/index.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsRating.HARD///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-rating/-h-a-r-d/index.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsRating///PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-rating/index.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsRating/entries/#/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-rating/entries.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsRating/value/#/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-rating/value.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsRating/valueOf/#kotlin.String/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-rating/value-of.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsRating/values/#/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-rating/values.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsState///PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-state/index.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsState/FsrsState/#kotlin.Double#kotlin.Double/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-state/-fsrs-state.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsState/difficulty/#/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-state/difficulty.html
+$dokka.location:one.felsen.fsrskt.fsrs6/FsrsState/stability/#/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.fsrs6/-fsrs-state/stability.html
+$dokka.location:one.felsen.fsrskt.helper////PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.helper/index.html
+$dokka.location:one.felsen.fsrskt.helper/DateTimeHelper///PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.helper/-date-time-helper/index.html
+$dokka.location:one.felsen.fsrskt.helper/DateTimeHelper/elapsedDays/kotlin.time.Instant#kotlin.time.Instant/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.helper/-date-time-helper/elapsed-days.html
+$dokka.location:one.felsen.fsrskt.helper/DateTimeHelper/isSameDay/kotlin.time.Instant#kotlin.time.Instant#kotlin.Int#kotlinx.datetime.TimeZone/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.helper/-date-time-helper/is-same-day.html
+$dokka.location:one.felsen.fsrskt.helper/DateTimeHelper/toDayNumber/kotlin.time.Instant#kotlin.Int#kotlinx.datetime.TimeZone/PointingToDeclaration/fsrs-kt/one.felsen.fsrskt.helper/-date-time-helper/to-day-number.html
+one.felsen.fsrskt.fsrs6
+one.felsen.fsrskt.helper
