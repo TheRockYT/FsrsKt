@@ -63,8 +63,8 @@ create a simple flashcard application that uses FSRS to schedule reviews.
 
     ```kotlin
     // Create a deck of flashcards
-    private val deck = mutableListOf<Flashcard>()
-    deck.add(Flashcard("1", "What is the capital of South-Korea?", "Seoul"))
+    val deck = mutableListOf<Flashcard>()
+    deck.add(Flashcard("What is the capital of South-Korea?", "Seoul"))
     // ... add more cards
     ```
 
@@ -96,7 +96,7 @@ create a simple flashcard application that uses FSRS to schedule reviews.
     val calc = FsrsCalculator()
    
     val card: Flashcard = ... // Get the card to review (see step 3)
-    val rating: Rating = ... // Get the user's rating for the card (e.g., EASY, GOOD)
+    val rating: FsrsRating = ... // Get the user's rating for the card (e.g., EASY, GOOD)
    
     // Get the current time
     val now = Clock.System.now()
