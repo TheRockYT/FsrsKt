@@ -49,7 +49,7 @@ kotlin {
 }
 
 mavenPublishing {
-    publishToMavenCentral(automaticRelease = true, validateDeployment = DeploymentValidation.PUBLISHED)
+    publishToMavenCentral(automaticRelease = true)
 
     signAllPublications()
 
