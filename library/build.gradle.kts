@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     alias(libs.plugins.vanniktech.mavenPublish)
+    alias(libs.plugins.jetbrains.dokka)
 }
 
 group = "io.github.kotlin"
@@ -37,6 +38,10 @@ kotlin {
 
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+
+        androidMain.dependencies {
+            implementation(libs.android.documentation.plugin)
         }
     }
 }
@@ -72,5 +77,15 @@ mavenPublishing {
             connection = "YYY"
             developerConnection = "ZZZ"
         }
+    }
+}
+
+dokka {
+    pluginsConfiguration.html {
+        moduleName.set(rootProject.name)
+        moduleVersion.set(project.version.toString())
+
+        footerMessage.set("Made with <3")
+        separateInheritedMembers.set(true)
     }
 }
