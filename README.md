@@ -115,3 +115,9 @@ create a simple flashcard application that uses FSRS to schedule reviews.
     // Precompute the due date for the next review based on the new FSRS state and the current time.
     card.dueDate = now.plus(newState.stability.days)
     ```
+
+## Thanks
+
+This project is based on the work of Jarrett Ye and other contributors to the FSRS algorithm. You can find more
+information about the FSRS algorithm on the
+wiki: [The Algorithm](https://github.com/open-spaced-repetition/awesome-fsrs/wiki/The-Algorithm#default-parameters).
