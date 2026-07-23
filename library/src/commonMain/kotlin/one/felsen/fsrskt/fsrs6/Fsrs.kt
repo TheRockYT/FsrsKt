@@ -95,7 +95,7 @@ class Fsrs(val w: List<Double> = FsrsParameters.defaultParameters) {
 
         val sPrime =
             stability * (exp(w[8]) * (11.0 - difficulty) * stability.pow(-w[9]) * (exp(w[10] * (1.0 - retrievability)) - 1.0) * w15 * w16 + 1.0)
-        return stability * sPrime
+        return sPrime
     }
 
     /**
