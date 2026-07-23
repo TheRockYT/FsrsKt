@@ -16,6 +16,10 @@ the [ABC of FSRS](https://github.com/open-spaced-repetition/awesome-fsrs/wiki/AB
 This library aims to provide a Kotlin implementation of the FSRS-6 algorithm that can be used in various applications,
 including Android apps, desktop applications, and server-side applications.
 
+## Api Documentation
+
+The API documentation for FsrsKt can be found on [fsrskt.felsen.one](https://fsrskt.felsen.one/).
+
 ## Getting Started
 
 ### Dependency
