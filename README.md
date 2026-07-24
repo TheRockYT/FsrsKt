@@ -26,8 +26,7 @@ The API documentation for FsrsKt can be found on [fsrskt.felsen.one](https://fsr
 
 To get started with FsrsKt, you can add the library to your Kotlin Multiplatform project.
 
-Currently, the library is not published to a public Maven repository, so you will need to clone the repository and
-include it as a module in your project, or add it as a git submodule.
+The library is published to [Maven Central](https://central.sonatype.com/artifact/one.felsen.fsrskt/fsrskt).
 
 ### Basic Implementation
 
