@@ -2,7 +2,7 @@ package one.felsen.fsrskt.fsrs6
 
 import kotlinx.datetime.TimeZone
 import one.felsen.fsrskt.helper.DateTimeHelper.elapsedCalendarDays
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Instant

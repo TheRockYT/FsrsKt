@@ -5,7 +5,7 @@ import one.felsen.fsrskt.helper.DateTimeHelper.elapsedCalendarDays
 import one.felsen.fsrskt.helper.DateTimeHelper.elapsedDays
 import one.felsen.fsrskt.helper.DateTimeHelper.isSameDay
 import one.felsen.fsrskt.helper.DateTimeHelper.toDayNumber
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse

@@ -1,6 +1,6 @@
 package one.felsen.fsrskt.fsrs6
 
-import org.junit.jupiter.api.Test
+import kotlin.test.Test
 import kotlin.test.assertEquals
 
 /**
