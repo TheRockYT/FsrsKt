@@ -7,9 +7,14 @@ import kotlin.math.pow
 /**
  * FSRS6 implementation based on https://github.com/open-spaced-repetition/awesome-fsrs/wiki/The-Algorithm
  *
- * @param w The parameters for the FSRS algorithm.
+ * @param parameters The parameters for the FSRS algorithm.
  */
-class Fsrs(val w: List<Double> = FsrsParameters.defaultParameters) {
+class Fsrs(parameters: List<Double> = FsrsParameters.defaultParameters) {
+
+    /**
+     * The parameters for the FSRS algorithm.
+     */
+    val w: List<Double> = parameters.toList()
 
     init {
         /**
@@ -17,6 +22,24 @@ class Fsrs(val w: List<Double> = FsrsParameters.defaultParameters) {
          * See: https://github.com/open-spaced-repetition/awesome-fsrs/wiki/The-Algorithm#default-parameters
          */
         require(w.size == 21) { "Parameters must contain exactly 21 values." }
+
+        /**
+         * Ensures that every parameter lies within its bounds and reports all parameters that do not.
+         */
+        val errorMessages = w.indices.mapNotNull { index ->
+            val parameter = w[index]
+            val lowerBound = FsrsParameters.lowerBoundsParameters[index]
+            val upperBound = FsrsParameters.upperBoundsParameters[index]
+
+            if (lowerBound <= parameter && parameter <= upperBound) {
+                null
+            } else {
+                "parameters[$index] = $parameter is out of bounds: ($lowerBound, $upperBound)"
+            }
+        }
+        require(errorMessages.isEmpty()) {
+            "One or more parameters are out of bounds:\n" + errorMessages.joinToString("\n")
+        }
     }
 
     /**
