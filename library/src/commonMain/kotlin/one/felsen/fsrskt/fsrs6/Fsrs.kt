@@ -47,46 +47,52 @@ class Fsrs(parameters: List<Double> = FsrsParameters.defaultParameters) {
      */
     private val factor = 0.9.pow(-1.0 / w[20]) - 1.0
 
+    private fun clampStability(stability: Double): Double = maxOf(stability, FsrsParameters.STABILITY_MIN)
+
     /**
      * Calculates the initial stability for a given rating.
      *
      * @param rating The rating for which to calculate the initial stability.
-     * @return The initial stability value.
+     * @return The initial stability value, at least [FsrsParameters.STABILITY_MIN].
      */
-    fun initialStability(rating: FsrsRating): Double = w[rating.value - 1]
+    fun initialStability(rating: FsrsRating): Double = clampStability(w[rating.value - 1])
 
     /**
      * Calculates the initial difficulty for a given rating.
      *
      * @param rating The rating for which to calculate the initial difficulty.
-     * @return The initial difficulty value, clamped between 1.0 and 10.0.
+     * @param clamp Whether to clamp the value between 1.0 and 10.0.
+     * @return The initial difficulty value.
      */
-    fun initialDifficulty(rating: FsrsRating): Double = (w[4] - exp(w[5] * (rating.value - 1)) + 1.0).coerceIn(1.0, 10.0)
+    fun initialDifficulty(rating: FsrsRating, clamp: Boolean = true): Double {
+        val initialDifficulty = w[4] - exp(w[5] * (rating.value - 1)) + 1.0
+        return if (clamp) initialDifficulty.coerceIn(1.0, 10.0) else initialDifficulty
+    }
 
 
     /**
      * Calculates the retrievability based on elapsed time and stability.
      *
-     * @param t The elapsed time since the last review. (in days)
+     * @param t The elapsed time since the last review (in days). Negative values are treated as 0.
      * @param s The current stability of the item. (in days)
      * @return The retrievability value, which indicates how likely the item is to be recalled.
      */
     fun retrievability(t: Double, s: Double): Double {
-        val r = (1.0 + factor * (t / s)).pow(-w[20])
+        val r = (1.0 + factor * (maxOf(0.0, t) / s)).pow(-w[20])
         return r
     }
 
     /**
-     * Calculates the next stability based on the current stability, difficulty, and rating.
+     * Calculates the next difficulty based on the current difficulty and rating.
      *
      * @param difficulty The current difficulty of the item. (1.0 to 10.0)
      * @param rating The rating given by the user after reviewing the item.
-     * @return The next stability value, which indicates how long until the item should be reviewed again.
+     * @return The next difficulty value, clamped between 1.0 and 10.0.
      */
     fun nextDifficulty(difficulty: Double, rating: FsrsRating): Double {
         val deltaD = -w[6] * (rating.value - 3.0)
         val dPrime = difficulty + deltaD * ((10.0 - difficulty) / 9.0)
-        val dDoublePrime = w[7] * initialDifficulty(FsrsRating.EASY) + (1.0 - w[7]) * dPrime
+        val dDoublePrime = w[7] * initialDifficulty(FsrsRating.EASY, clamp = false) + (1.0 - w[7]) * dPrime
         return dDoublePrime.coerceIn(1.0, 10.0)
     }
 
@@ -95,11 +101,17 @@ class Fsrs(parameters: List<Double> = FsrsParameters.defaultParameters) {
      *
      * @param stability The current stability of the item. (in days)
      * @param rating The rating given by the user after reviewing the item.
-     * @return The next stability value, which indicates how long until the item should be reviewed again.
+     * @return The next stability value, at least [FsrsParameters.STABILITY_MIN], which indicates how long until the item should be reviewed again.
      */
     fun nextStabilityShortTerm(stability: Double, rating: FsrsRating): Double {
-        val sPrime = stability * exp(w[17] * (rating.value - 3.0 + w[18])) * stability.pow(-w[19])
-        return if (rating.value >= 3) maxOf(sPrime, stability) else sPrime
+        val shortTermStabilityIncrease = exp(w[17] * (rating.value - 3.0 + w[18])) * stability.pow(-w[19])
+
+        val increase = when (rating) {
+            FsrsRating.HARD, FsrsRating.GOOD, FsrsRating.EASY -> maxOf(shortTermStabilityIncrease, 1.0)
+            FsrsRating.AGAIN -> shortTermStabilityIncrease
+        }
+
+        return clampStability(stability * increase)
     }
 
     /**
@@ -130,9 +142,11 @@ class Fsrs(parameters: List<Double> = FsrsParameters.defaultParameters) {
      * @return The next stability value, which indicates how long until the item should be reviewed again.
      */
     fun stabilityOnLapse(difficulty: Double, stability: Double, retrievability: Double): Double {
-        val sPrime =
+        val nextForgetStabilityLongTermParams =
             (w[11] * difficulty.pow(-w[12]) * ((stability + 1.0).pow(w[13]) - 1.0) * exp(w[14] * (1.0 - retrievability)))
 
-        return min(sPrime, stability)
+        val nextForgetStabilityShortTermParams = stability / exp(w[17] * w[18])
+
+        return min(nextForgetStabilityLongTermParams, nextForgetStabilityShortTermParams)
     }
 }
