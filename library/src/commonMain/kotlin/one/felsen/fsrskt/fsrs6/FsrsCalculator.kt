@@ -12,11 +12,13 @@ class FsrsCalculator(val fsrs: Fsrs = Fsrs()) {
      *
      * @param state The current state of the flashcard, or null if it's a new card.
      * @param rating The user's rating of their recall performance.
-     * @param elapsedDays The number of days since the last review.
-     * @param sameDay A boolean indicating if the review is happening on the same day as the last review.
+     * @param elapsedDays The number of days since the last review, or null if the time of the last review is unknown.
+     * Less than one day uses the short-term stability. Otherwise, and if it is unknown, the long-term stability is used,
+     * with a retrievability of 0 in the unknown case. Ignored for a new card.
+     * Fractional days are used as they are; py-fsrs rounds down to whole days.
      * @return The new state of the flashcard after applying the FSRS algorithm.
      */
-    fun review(state: FsrsState?, rating: FsrsRating, elapsedDays: Double, sameDay: Boolean): FsrsState {
+    fun review(state: FsrsState?, rating: FsrsRating, elapsedDays: Double?): FsrsState {
         // The state is null if the card is new, so we initialize it with default values based on the rating.
         if (state == null) {
             return FsrsState(fsrs.initialDifficulty(rating), fsrs.initialStability(rating))
@@ -24,12 +26,10 @@ class FsrsCalculator(val fsrs: Fsrs = Fsrs()) {
 
         val newDifficulty = fsrs.nextDifficulty(state.difficulty, rating)
 
-        val newStability = when {
-            sameDay -> fsrs.nextStabilityShortTerm(state.stability, rating)
-            rating == FsrsRating.AGAIN -> fsrs.stabilityOnLapse(
-                state.difficulty, state.stability, fsrs.retrievability(elapsedDays, state.stability)
-            )
-            else -> fsrs.stabilityOnRecall(
+        val newStability = if (elapsedDays != null && elapsedDays < 1.0) {
+            fsrs.nextStabilityShortTerm(state.stability, rating)
+        } else {
+            fsrs.nextStability(
                 state.difficulty, state.stability, fsrs.retrievability(elapsedDays, state.stability), rating
             )
         }

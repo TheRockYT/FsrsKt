@@ -6,6 +6,11 @@ package one.felsen.fsrskt.fsrs6
 object FsrsParameters {
 
     /**
+     * Lower bound for the stability of an item. (in days)
+     */
+    const val STABILITY_MIN = 0.001
+
+    /**
      * Default parameters for the FSRS6 algorithm.
      */
     val defaultParameters = listOf(
@@ -30,5 +35,59 @@ object FsrsParameters {
         0.0912,
         0.0658,
         0.1542
+    )
+
+    /**
+     * Lower bounds of the parameters for the FSRS6 algorithm.
+     */
+    val lowerBoundsParameters = listOf(
+        STABILITY_MIN,
+        STABILITY_MIN,
+        STABILITY_MIN,
+        STABILITY_MIN,
+        1.0,
+        0.001,
+        0.001,
+        0.001,
+        0.0,
+        0.0,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.1
+    )
+
+    /**
+     * Upper bounds of the parameters for the FSRS6 algorithm.
+     */
+    val upperBoundsParameters = listOf(
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        10.0,
+        4.0,
+        4.0,
+        0.75,
+        4.5,
+        0.8,
+        3.5,
+        5.0,
+        0.25,
+        0.9,
+        4.0,
+        1.0,
+        6.0,
+        2.0,
+        2.0,
+        0.8,
+        0.8
     )
 }
