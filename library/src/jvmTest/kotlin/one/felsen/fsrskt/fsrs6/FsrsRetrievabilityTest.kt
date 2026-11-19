@@ -19,4 +19,9 @@ class FsrsRetrievabilityTest {
     fun retrievabilityIsOneWhenElapsedTimeIsFiveDaysNegative() {
         assertEquals(1.0, fsrs.retrievability(-5.0, 2.0))
     }
+
+    @Test
+    fun retrievabilityIsZeroWhenElapsedTimeIsUnknown() {
+        assertEquals(0.0, fsrs.retrievability(null, 2.0))
+    }
 }

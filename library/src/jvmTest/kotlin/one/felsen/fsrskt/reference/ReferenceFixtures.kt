@@ -16,6 +16,8 @@ object ReferenceFixtures {
 
     val parameterSetsFile: ParameterSetsFile by lazy { load<ParameterSetsFile>("parameter-sets.json") }
 
+    val reviewSequenceFile: ReviewSequenceFile by lazy { load<ReviewSequenceFile>("review-sequences.json") }
+
     /** Parameter sets by name, e.g. "default" or "random-03". */
     val parameterSets: Map<String, List<Double>> by lazy {
         parameterSetsFile.parameterSets.associate { it.name to it.w }

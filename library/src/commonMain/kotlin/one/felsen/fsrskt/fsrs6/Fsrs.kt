@@ -73,11 +73,14 @@ class Fsrs(parameters: List<Double> = FsrsParameters.defaultParameters) {
     /**
      * Calculates the retrievability based on elapsed time and stability.
      *
-     * @param t The elapsed time since the last review (in days). Negative values are treated as 0.
+     * @param t The elapsed time since the last review (in days), or null if the time of the last review is unknown.
+     * Negative values are treated as 0.
      * @param s The current stability of the item. (in days)
-     * @return The retrievability value, which indicates how likely the item is to be recalled.
+     * @return The retrievability value, which indicates how likely the item is to be recalled. 0 if [t] is unknown.
      */
-    fun retrievability(t: Double, s: Double): Double {
+    fun retrievability(t: Double?, s: Double): Double {
+        if (t == null) return 0.0
+
         val r = (1.0 + factor * (maxOf(0.0, t) / s)).pow(-w[20])
         return r
     }
@@ -112,6 +115,24 @@ class Fsrs(parameters: List<Double> = FsrsParameters.defaultParameters) {
         }
 
         return clampStability(stability * increase)
+    }
+
+    /**
+     * Calculates the next stability for long-term reviews, using [stabilityOnLapse] for AGAIN and [stabilityOnRecall] for all other ratings.
+     *
+     * @param difficulty The current difficulty of the item. (1.0 to 10.0)
+     * @param stability The current stability of the item. (in days)
+     * @param retrievability The current retrievability of the item. (0.0 to 1.0)
+     * @param rating The rating given by the user after reviewing the item.
+     * @return The next stability value, at least [FsrsParameters.STABILITY_MIN], which indicates how long until the item should be reviewed again.
+     */
+    fun nextStability(difficulty: Double, stability: Double, retrievability: Double, rating: FsrsRating): Double {
+        val nextStability = when (rating) {
+            FsrsRating.AGAIN -> stabilityOnLapse(difficulty, stability, retrievability)
+            FsrsRating.HARD, FsrsRating.GOOD, FsrsRating.EASY -> stabilityOnRecall(difficulty, stability, retrievability, rating)
+        }
+
+        return clampStability(nextStability)
     }
 
     /**

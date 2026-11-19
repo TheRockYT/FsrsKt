@@ -88,8 +88,7 @@ create a simple flashcard application that uses FSRS to schedule reviews.
     ```kotlin
     import one.felsen.fsrskt.fsrs6.FsrsCalculator
     import one.felsen.fsrskt.fsrs6.FsrsRating
-    import one.felsen.fsrskt.helper.DateTimeHelper.elapsedDays
-    import one.felsen.fsrskt.helper.DateTimeHelper.isSameDay
+    import one.felsen.fsrskt.helper.DateTimeHelper.elapsedCalendarDays
    
     // Create an instance of the FsrsCalculator to handle the review process.
     val calc = FsrsCalculator()
@@ -106,11 +105,12 @@ create a simple flashcard application that uses FSRS to schedule reviews.
         state = card.fsrsState,
         // Provide the user's rating for the card
         rating = rating,
-        // Provide the elapsed time since the last review of the card. 0.0 is used if the card has not been reviewed before.
-        elapsedDays = card.lastReview?.elapsedDays(now) ?: 0.0,
-        // Provide a boolean indicating whether the card was reviewed on the same day as the last review.
-        // `isSameDay` concideres all time until 4 AM of the next day as the same day.
-        sameDay = card.lastReview?.isSameDay(now) ?: false     
+        // Provide the calendar days elapsed since the last review of the card, or null if it is unknown.
+        // `elapsedCalendarDays` considers all time until 4 AM of the next day as the same day.
+        // Less than one day uses the short-term formula, otherwise the long-term formula is used.
+        // Note: py-fsrs counts whole 24-hour periods instead. For example, a review at 11 PM and the next one at
+        // 5 AM count as one day here, but as zero days in py-fsrs. Use `elapsedDays` to count like py-fsrs.
+        elapsedDays = card.lastReview?.elapsedCalendarDays(now)
     )
 
     // Update the card's FSRS state and last review date with the new values calculated by the FsrsCalculator.
